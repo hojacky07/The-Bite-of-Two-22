@@ -4,7 +4,6 @@ class Player {
   constructor(x, y) 
   {
     this.sprite = new Sprite(x,y,64,64);
-    this.sprite.color = "blue";
     
     this.playerXDirection = 0;
     this.playerYDirection = 0;
@@ -12,6 +11,8 @@ class Player {
 
     this.lastXKey = '';
     this.lastYKey = '';
+
+    this.playerSelected = "kyla";
   }
 
   Move() 
@@ -95,5 +96,84 @@ class Player {
 
     this.sprite.vel.x = constrain(this.sprite.vel.x, -maxSpeed, maxSpeed);
     this.sprite.vel.y = constrain(this.sprite.vel.y, -maxSpeed, maxSpeed);
+  }
+
+  UpdateSprite() 
+  {
+    if (this.playerXDirection == 0 && this.playerYDirection == 0) 
+    {
+      if (this.playerSelected = "Kyla") 
+      {
+        this.sprite.image = 'Sprites/Player/Kyla_Down.png';
+      } 
+      else if (this.playerSelected = "Jacky") 
+      {
+        this.sprite.image = 'Sprites/Player/Jacky_Down.png';
+      } 
+      else if (this.playerSelected = "Noah") 
+      {
+        this.sprite.image = 'Sprites/Player/Noah_Down.png';
+      }
+    } 
+
+    if (this.playerXDirection == -1) {
+      if (this.playerSelected = "Kyla") 
+      {
+        this.sprite.image = 'Sprites/Player/Kyla_Left.png';
+      } 
+      else if (this.playerSelected = "Jacky") 
+      {
+        this.sprite.image = 'Sprites/Player/Jacky_Left.png';
+      } 
+      else if (this.playerSelected = "Noah") 
+      {
+        this.sprite.image = 'Sprites/Player/Noah_Left.png';
+      }
+    }
+
+    if (this.playerXDirection == 1) {
+      if (this.playerSelected = "Kyla") 
+      {
+        this.sprite.image = 'Sprites/Player/Kyla_Right.png';
+      } 
+      else if (this.playerSelected = "Jacky") 
+      {
+        this.sprite.image = 'Sprites/Player/Jacky_Right.png';
+      } 
+      else if (this.playerSelected = "Noah") 
+      {
+        this.sprite.image = 'Sprites/Player/Noah_Right.png';
+      }
+    }
+
+    if (this.playerYDirection == -1) {
+      if (this.playerSelected = "Kyla") 
+      {
+        this.sprite.image = 'Sprites/Player/Kyla_Up.png';
+      } 
+      else if (this.playerSelected = "Jacky") 
+      {
+        this.sprite.image = 'Sprites/Player/Jacky_Up.png';
+      } 
+      else if (this.playerSelected = "Noah") 
+      {
+        this.sprite.image = 'Sprites/Player/Noah_Up.png';
+      }
+    }
+
+    if (this.playerYDirection == 1) {
+      if (this.playerSelected = "Kyla") 
+      {
+        this.sprite.image = 'Sprites/Player/Kyla_Down.png';
+      } 
+      else if (this.playerSelected = "Jacky") 
+      {
+        this.sprite.image = 'Sprites/Player/Jacky_Down.png';
+      } 
+      else if (this.playerSelected = "Noah") 
+      {
+        this.sprite.image = 'Sprites/Player/Noah_Down.png';
+      }
+    }
   }
 }

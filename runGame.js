@@ -8,4 +8,5 @@ function setup() {
 function draw() {
   background(0);
   player.Move();
+  player.UpdateSprite();
 }
