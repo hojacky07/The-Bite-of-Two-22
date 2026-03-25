@@ -12,7 +12,7 @@ class Player {
     this.lastXKey = '';
     this.lastYKey = '';
 
-    this.playerSelected = "kyla";
+    this.playerSelected = "Kyla";
   }
 
   Move() 
@@ -87,6 +87,14 @@ class Player {
     {
       this.playerIsMoving = true;
     }
+
+    let magnitude = Math.sqrt(this.playerXDirection ** 2 + this.playerYDirection ** 2)
+
+    if (magnitude > 1) 
+    {
+      this.playerXDirection /= magnitude;
+      this.playerYDirection /= magnitude;
+    }
     
     this.sprite.vel.x += this.playerXDirection * acceleration;
     this.sprite.vel.y += this.playerYDirection * acceleration;
@@ -101,30 +109,30 @@ class Player {
   UpdateSprite() 
   {
     if (this.playerYDirection == -1) {
-      if (this.playerSelected = "Kyla") 
+      if (this.playerSelected == "Kyla") 
       {
         this.sprite.image = 'Sprites/Player/Kyla_Up.png';
       } 
-      else if (this.playerSelected = "Jacky") 
+      else if (this.playerSelected == "Jacky") 
       {
         this.sprite.image = 'Sprites/Player/Jacky_Up.png';
       } 
-      else if (this.playerSelected = "Noah") 
+      else if (this.playerSelected == "Noah") 
       {
         this.sprite.image = 'Sprites/Player/Noah_Up.png';
       }
     }
 
     if (this.playerYDirection == 1) {
-      if (this.playerSelected = "Kyla") 
+      if (this.playerSelected == "Kyla") 
       {
         this.sprite.image = 'Sprites/Player/Kyla_Down.png';
       } 
-      else if (this.playerSelected = "Jacky") 
+      else if (this.playerSelected == "Jacky") 
       {
         this.sprite.image = 'Sprites/Player/Jacky_Down.png';
       } 
-      else if (this.playerSelected = "Noah") 
+      else if (this.playerSelected == "Noah") 
       {
         this.sprite.image = 'Sprites/Player/Noah_Down.png';
       }
@@ -132,45 +140,45 @@ class Player {
 
     if (this.playerXDirection == 0 && this.playerYDirection == 0) 
     {
-      if (this.playerSelected = "Kyla") 
+      if (this.playerSelected == "Kyla") 
       {
         this.sprite.image = 'Sprites/Player/Kyla_Down.png';
       } 
-      else if (this.playerSelected = "Jacky") 
+      else if (this.playerSelected == "Jacky") 
       {
         this.sprite.image = 'Sprites/Player/Jacky_Down.png';
       } 
-      else if (this.playerSelected = "Noah") 
+      else if (this.playerSelected == "Noah") 
       {
         this.sprite.image = 'Sprites/Player/Noah_Down.png';
       }
     } 
 
     if (this.playerXDirection == -1) {
-      if (this.playerSelected = "Kyla") 
+      if (this.playerSelected == "Kyla") 
       {
         this.sprite.image = 'Sprites/Player/Kyla_Left.png';
       } 
-      else if (this.playerSelected = "Jacky") 
+      else if (this.playerSelected == "Jacky") 
       {
         this.sprite.image = 'Sprites/Player/Jacky_Left.png';
       } 
-      else if (this.playerSelected = "Noah") 
+      else if (this.playerSelected == "Noah") 
       {
         this.sprite.image = 'Sprites/Player/Noah_Left.png';
       }
     }
 
     if (this.playerXDirection == 1) {
-      if (this.playerSelected = "Kyla") 
+      if (this.playerSelected == "Kyla") 
       {
         this.sprite.image = 'Sprites/Player/Kyla_Right.png';
       } 
-      else if (this.playerSelected = "Jacky") 
+      else if (this.playerSelected == "Jacky") 
       {
         this.sprite.image = 'Sprites/Player/Jacky_Right.png';
       } 
-      else if (this.playerSelected = "Noah") 
+      else if (this.playerSelected == "Noah") 
       {
         this.sprite.image = 'Sprites/Player/Noah_Right.png';
       }
