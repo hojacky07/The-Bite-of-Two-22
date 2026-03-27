@@ -8,6 +8,12 @@ class Inventory
         this.item = "empty";
 
         this.sprite = new Sprite(this.x,this.y,64,64);
+        this.sprite.text = slot;
+    }
+
+    RemoveItem() 
+    {
+        this.item = "empty";
     }
 
     AddItem(item) 
