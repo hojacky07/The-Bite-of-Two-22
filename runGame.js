@@ -8,7 +8,7 @@ function setup()
   for (let i = 0; i < 8; i++)
   {
     let slotNum = i + 1;
-    let slotX = i * 47 + 604;
+    let slotX = i * 47 + 764 - 178;
 
     inventorySlots.push(new Inventory(slotNum, slotX, 784));
   }

@@ -7,7 +7,7 @@ class Inventory
         this.y = y;
         this.item = "empty";
 
-        this.sprite = new Sprite(this.x,this.y,48,48);
+        this.sprite = new Sprite(this.x,this.y,96,96);
         this.sprite.image = `Sprites/Inventory/InventorySlot_${this.slot}.png`;
         this.sprite.collider = 'none';
     }
