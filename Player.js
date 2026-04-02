@@ -1,9 +1,9 @@
 
-class Player {
-
+class Player 
+{
   constructor(x, y) 
   {
-    this.sprite = new Sprite(x,y,64,64);
+    this.sprite = new Sprite(x,y,160,160);
     
     this.playerXDirection = 0;
     this.playerYDirection = 0;
