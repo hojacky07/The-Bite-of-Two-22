@@ -3,8 +3,8 @@ class Player
 {
   constructor(x, y) 
   {
-    this.sprite = new Sprite(x,y,160,160);
-    
+    this.sprite = new Sprite(x,y);
+
     this.playerXDirection = 0;
     this.playerYDirection = 0;
     this.playerIsMoving = false;
@@ -13,6 +13,30 @@ class Player
     this.lastYKey = '';
 
     this.playerSelected = "Kyla";
+  }
+
+  SetStageController(stageController) 
+  {
+    this.stageController = stageController;
+  }
+
+  UpdateStageController() 
+  {
+    if (this.stageController.stage == "RCC Lounge") {
+      if (this.sprite.y > 842) 
+      {
+        this.stageController.updateStage("Gould Street");
+        this.sprite.y = 20;
+      }
+    }
+
+    if (this.stageController.stage == "Gould Street") {
+      if (this.sprite.y < 0) 
+      {
+        this.stageController.updateStage("RCC Lounge");
+        this.sprite.y = 822;
+      }
+    }
   }
 
   Move() 
