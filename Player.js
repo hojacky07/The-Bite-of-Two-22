@@ -112,7 +112,7 @@ class Player
     this.targetVelX += this.playerXDirection * acceleration;
     this.targetVelY += this.playerYDirection * acceleration;
 
-    this.stageController.moveStageSprite(this.targetVelX, this.targetVelY);
+    this.stageController.MoveStageSprite(this.targetVelX, this.targetVelY);
 
     if (this.playerXDirection == 0) this.targetVelX *= friction;
     if (this.playerYDirection == 0) this.targetVelY *= friction;
