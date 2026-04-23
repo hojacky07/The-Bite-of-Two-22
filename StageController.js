@@ -8,12 +8,13 @@ class StageController
         this.stageSprite.layer = 0;
     }
     
-    updateStage(stage) 
+    UpdateStage(stage) 
     {
         this.stage = stage;
     }
 
-    moveStageSprite(velX, velY) {
+    MoveStageSprite(velX, velY) 
+    {
         this.stageSprite.vel.x = -velX;
         this.stageSprite.vel.y = -velY;
     }
