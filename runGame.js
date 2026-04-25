@@ -9,17 +9,24 @@ let lastYKey = '';
 let idleAniK;
 let walkLAniK;
 let walkRAniK;
+let walkUAniK;
+let walkDAniK;
 let map;
 let floor1; 
 
 let gameState = "mainMenu";
 let level = 1;
 
+//Collision Sprites
+let TopWall1;
+
 function preload() 
 {
   idleAniK = loadAnimation(imageSequence('Sprites/Kyla/Kyla_Idle', 4));
   walkLAniK = loadAnimation(imageSequence('Sprites/Kyla/Kyla_WalkLeft', 5));
   walkRAniK = loadAnimation(imageSequence('Sprites/Kyla/Kyla_WalkRight', 5));
+  walkUAniK = loadAnimation(imageSequence('Sprites/Kyla/Kyla_WalkUp', 4));
+  walkDAniK = loadAnimation(imageSequence('Sprites/Kyla/Kyla_WalkDown', 4));
   floor1 = loadImage('Sprites/Map/RCC First Floor.png');
 }
 
@@ -32,8 +39,17 @@ function setup()
   player.addAni('idle', idleAniK);
   player.addAni('walkLeft', walkLAniK);
   player.addAni('walkRight', walkRAniK);
+  player.addAni('walkUp', walkUAniK);
+  player.addAni('walkDown', walkDAniK);
+  player.h = 16;
+  player.anis.offset.y = -127.5;
   player.rotationLock = true;
   player.debug = true;
+
+  // Setting Up Level 1 Collision Sprites
+  TopWall1 = new Sprite(-600, -480, 2000, 200); 
+  TopWall1.collider = 'static';
+  TopWall1.debug = true;
 
   map = new Sprite(0,0, 9600, 5400);
   map.image = floor1;
@@ -56,7 +72,7 @@ function draw()
   if (gameState === "mainMenu") mainMenu();
   if (gameState === "introScene") introScene();
   if (gameState === "runGame") runGame();
-
+  text("X: " + floor(mouse.x) + " Y: " + floor(mouse.y), 20, 30);
 }
 
 function mainMenu() 
@@ -77,7 +93,7 @@ function introScene()
 function runGame() 
 {
   clear();
-  mouse.visible = false;
+  mouse.visible = true;
   
   playerMovement();
   world.step();
@@ -195,17 +211,25 @@ function playerMovement()
     player.ani.frameDelay = 10;
     player.ani = 'idle';
   }
-
-  if (playerXDirection == -1)
+  else if (playerXDirection <  -0.5)
   {
     player.ani.frameDelay = 8;
     player.ani = 'walkLeft';
   }
-
-  if (playerXDirection == 1)
+  else if (playerXDirection > 0.5)
   {
     player.ani.frameDelay = 8;
     player.ani = 'walkRight';
+  }
+  else if (playerYDirection < -0.5)
+  {
+    player.ani.frameDelay = 10; 
+    player.ani = 'walkUp';
+  }
+  else if (playerYDirection > 0.5)
+  {
+    player.ani.frameDelay = 10; 
+    player.ani = 'walkDown';
   }
 }
 
