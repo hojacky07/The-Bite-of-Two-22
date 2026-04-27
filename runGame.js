@@ -1,10 +1,9 @@
-// Game Variables
+// Player Variables
 let player;
 let playerXDirection;
 let playerYDirection;
 let lastXKey = '';
 let lastYKey = '';
-let dialogueTimer = 0;
 
 // Kyla The Player
 let idleDownAniK;
@@ -27,19 +26,21 @@ let stanDNum = 1;
 let stanD1;
 let stanD2;
 
-
-let convoStep = 0; 
-
 let map;
 let floor1; 
-let interactNum;
 
+let titleScreen;
 let startButton;
+let startButtonImg;
 let exitButton;
 
 // Game Variables
 let gameState = "mainMenu";
 let level = 1;
+let dialogueTimer = 0;
+let convoStep = 0; 
+let interactNum;
+let clock = [];
 
 //Collision Sprites
 let level1Walls;
@@ -66,6 +67,12 @@ function preload()
   dialogueKyla = loadImage('Sprites/Kyla/DialogueKyla.png');
   kylaSD1 = loadImage('Sprites/Kyla/KylaSD_1.png');
   kylaSD2 = loadImage('Sprites/Kyla/KylaSD_2.png');
+  titleScreen = loadImage('Title Screen.png');
+  startButtonImg = loadImage('Start Button.png');
+
+  for (let i = 0; i < 6; i++) {
+    clock[i] = loadImage(`Clock${i}.png`);
+  }
 }
 
 function setup() 
@@ -99,7 +106,8 @@ function setup()
 
   level1Walls = new Group();
   level1Walls.collider = 'static';
-  level1Walls.debug = true;
+  level1Walls.collider.visible = false;
+  level1Walls.debug = false;
   new level1Walls.Sprite(-2967.5, 278, 400, 2675);
   new level1Walls.Sprite(-1765, -520, 2000, 270);
   new level1Walls.Sprite(-726.5, -190, 77, 1200);
@@ -108,6 +116,7 @@ function setup()
   new level1Walls.Sprite(5775,347.5,350,1615);
   new level1Walls.Sprite(2596,1467.5,6708,625);
   new level1Walls.Sprite(-1965,1698.5,2410,167);
+  new level1Walls.Sprite(-730,1315,80,475);
   
 
   map = new Sprite(0,0, 9600, 5400);
@@ -129,15 +138,13 @@ function draw()
   if (gameState === "mainMenu") mainMenu();
   if (gameState === "introScene") introScene();
   if (gameState === "runGame") runGame();
-  fill(0);
-  text("X: " + floor(mouse.x) + " Y: " + floor(mouse.y), 20, 30);
 }
 
 function mainMenu() 
 {
-  background(255)
+  image(titleScreen, 0, 0);
   if (mouse.presses()) 
-    {
+  {
     gameState = "introScene";
   }
 }
@@ -145,7 +152,7 @@ function mainMenu()
 function introScene() 
 {
   if (frameCount > 120) 
-    {
+  {
     gameState = "runGame";
   }
 }
@@ -184,7 +191,7 @@ function runGame()
   allSprites.update();
   allSprites.draw();
   camera.off();
-
+  updateClock();
   handleRelayDialogue();
 }
 
@@ -296,14 +303,18 @@ function playerMovement()
 
 function updateClock() 
 {
-
+  if (interactNum > 5) 
+  {
+    interactNum = 0;
+  }
+  image(clock[interactNum ],0,0);
 }
 
 function updateLevel() 
 {
   if (level == 1) 
   {
-    level1Walls.visible = true;
+    level1Walls.visible = false;
     level1Walls.collider = 'static';
     stanNPC.visible = true;
     stanNPC.enabled = true;
