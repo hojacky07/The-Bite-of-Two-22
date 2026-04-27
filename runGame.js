@@ -231,7 +231,7 @@ function handleRelayDialogue()
 function playerMovement() 
 {
   let acceleration = 0.8;
-  let maxSpeed = 85;
+  let maxSpeed = 8.5;
   let friction = 0.85;
 
   if (kb.presses('1')) level = 1;
